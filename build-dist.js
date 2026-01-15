@@ -53,7 +53,8 @@ const distPackageJson = {
   },
   "dependencies": {
     "express": "^4.18.2",
-    "socket.io": "^4.8.1"
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1"
   },
   "engines": {
     "node": ">=18.0.0"
