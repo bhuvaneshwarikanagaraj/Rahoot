@@ -1,0 +1,27 @@
+{
+  "subject": "Spelling Quiz",
+  "type": "spelling",
+  "questions": [
+    {
+      "question": "A large African mammal with a trunk",
+      "audio": "elephant",
+      "solution": "elephant",
+      "cooldown": 3,
+      "time": 15
+    },
+    {
+      "question": "A yellow fruit that monkeys love",
+      "audio": "banana",
+      "solution": "banana",
+      "cooldown": 3,
+      "time": 15
+    },
+    {
+      "question": "The opposite of difficult",
+      "audio": "easy",
+      "solution": "easy",
+      "cooldown": 3,
+      "time": 15
+    }
+  ]
+}

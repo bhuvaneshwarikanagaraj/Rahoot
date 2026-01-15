@@ -7,6 +7,7 @@ import Prepared from "@rahoot/web/components/game/states/Prepared"
 import Question from "@rahoot/web/components/game/states/Question"
 import Result from "@rahoot/web/components/game/states/Result"
 import Start from "@rahoot/web/components/game/states/Start"
+import TypeAnswer from "@rahoot/web/components/game/states/TypeAnswer"
 import Wait from "@rahoot/web/components/game/states/Wait"
 import { useEvent, useSocket } from "@rahoot/web/contexts/socketProvider"
 import { usePlayerStore } from "@rahoot/web/stores/player"
@@ -85,6 +86,11 @@ const Game = () => {
 
     case STATUS.SELECT_ANSWER:
       component = <Answers data={status.data} />
+
+      break
+
+    case STATUS.TYPE_ANSWER:
+      component = <TypeAnswer data={status.data} />
 
       break
   }

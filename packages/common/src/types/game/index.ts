@@ -12,15 +12,24 @@ export type Answer = {
   points: number
 }
 
+export type TextAnswer = {
+  playerId: string
+  answer: string
+  points: number
+}
+
 export type Quizz = {
   subject: string
+  type?: "multiple-choice" | "spelling"
   questions: {
     question: string
     image?: string
-    answers: string[]
-    solution: number
+    answers?: string[]
+    solution: number | string
     cooldown: number
     time: number
+    // Spelling quiz specific fields
+    audio?: string
   }[]
 }
 

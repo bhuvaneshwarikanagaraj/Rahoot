@@ -3,7 +3,7 @@ import { z } from "zod"
 
 const env = createEnv({
   server: {
-    SOCKET_URL: z.string().default("http://localhost:3001"),
+    SOCKET_URL: z.string().default("http://localhost:3000"),
   },
 
   runtimeEnv: {

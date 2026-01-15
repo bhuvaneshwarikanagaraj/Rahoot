@@ -1,0 +1,1 @@
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,81211,e=>{"use strict";var t=e.i(36108),u=e.i(98319);e.s(["default",0,({children:e})=>{let{isConnected:c,connect:o}=(0,t.useSocket)();return(0,u.useEffect)(()=>{c||o()},[o,c]),e}])}]);

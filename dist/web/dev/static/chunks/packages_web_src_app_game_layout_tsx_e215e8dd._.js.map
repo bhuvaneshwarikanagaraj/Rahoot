@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/bhuvaneshwarikanagaraj/Desktop/Rahoot/packages/web/src/app/game/layout.tsx"],"sourcesContent":["\"use client\"\n\nimport { useSocket } from \"@rahoot/web/contexts/socketProvider\"\nimport { PropsWithChildren, useEffect } from \"react\"\n\nconst GameLayout = ({ children }: PropsWithChildren) => {\n  const { isConnected, connect } = useSocket()\n  useEffect(() => {\n    if (!isConnected) {\n      connect()\n    }\n  }, [connect, isConnected])\n\n  return children\n}\n\nexport default GameLayout\n"],"names":[],"mappings":";;;;AAEA;AACA;;AAHA;;;AAKA,MAAM,aAAa,CAAC,EAAE,QAAQ,EAAqB;;IACjD,MAAM,EAAE,WAAW,EAAE,OAAO,EAAE,GAAG,IAAA,qKAAS;IAC1C,IAAA,4UAAS;gCAAC;YACR,IAAI,CAAC,aAAa;gBAChB;YACF;QACF;+BAAG;QAAC;QAAS;KAAY;IAEzB,OAAO;AACT;GATM;;QAC6B,qKAAS;;;KADtC;uCAWS"}}]
+}

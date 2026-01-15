@@ -6,6 +6,7 @@ export const STATUS = {
   SHOW_PREPARED: "SHOW_PREPARED",
   SHOW_QUESTION: "SHOW_QUESTION",
   SELECT_ANSWER: "SELECT_ANSWER",
+  TYPE_ANSWER: "TYPE_ANSWER",
   SHOW_RESULT: "SHOW_RESULT",
   SHOW_RESPONSES: "SHOW_RESPONSES",
   SHOW_LEADERBOARD: "SHOW_LEADERBOARD",
@@ -25,6 +26,13 @@ export type CommonStatusDataMap = {
     image?: string
     time: number
     totalPlayer: number
+  }
+  TYPE_ANSWER: {
+    question: string
+    audio?: string
+    time: number
+    totalPlayer: number
+    wordLength: number
   }
   SHOW_RESULT: {
     correct: boolean

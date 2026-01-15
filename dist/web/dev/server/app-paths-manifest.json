@@ -1,0 +1,6 @@
+{
+  "/(auth)/manager/page": "app/(auth)/manager/page.js",
+  "/(auth)/page": "app/(auth)/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/socket/route": "app/socket/route.js"
+}

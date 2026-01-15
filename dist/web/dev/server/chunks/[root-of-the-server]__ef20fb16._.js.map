@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 40, "column": 0}, "map": {"version":3,"sources":["file:///Users/bhuvaneshwarikanagaraj/Desktop/Rahoot/packages/web/src/env.ts"],"sourcesContent":["import { createEnv } from \"@t3-oss/env-nextjs\"\nimport { z } from \"zod\"\n\nconst env = createEnv({\n  server: {\n    SOCKET_URL: z.string().default(\"http://localhost:3001\"),\n  },\n\n  runtimeEnv: {\n    SOCKET_URL: process.env.SOCKET_URL,\n  },\n})\n\nexport default env\n"],"names":[],"mappings":";;;;AAAA;AACA;;;AAEA,MAAM,MAAM,IAAA,oSAAS,EAAC;IACpB,QAAQ;QACN,YAAY,qOAAC,CAAC,MAAM,GAAG,OAAO,CAAC;IACjC;IAEA,YAAY;QACV,YAAY,QAAQ,GAAG,CAAC,UAAU;IACpC;AACF;uCAEe"}},
+    {"offset": {"line": 67, "column": 0}, "map": {"version":3,"sources":["file:///Users/bhuvaneshwarikanagaraj/Desktop/Rahoot/packages/web/src/app/socket/route.ts"],"sourcesContent":["import env from \"@rahoot/web/env\"\nimport { NextResponse } from \"next/server\"\n\nexport function GET() {\n  return NextResponse.json({\n    url: env.SOCKET_URL,\n  })\n}\n\nexport const dynamic = \"force-dynamic\"\n"],"names":[],"mappings":";;;;;;AAAA;AACA;;;AAEO,SAAS;IACd,OAAO,kTAAY,CAAC,IAAI,CAAC;QACvB,KAAK,0IAAG,CAAC,UAAU;IACrB;AACF;AAEO,MAAM,UAAU"}}]
+}

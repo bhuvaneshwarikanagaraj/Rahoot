@@ -34,6 +34,7 @@ export interface ServerToClientEvents {
   "game:reset": (_message: string) => void
   "game:updateQuestion": (_data: { current: number; total: number }) => void
   "game:playerAnswer": (_count: number) => void
+  "game:showCorrectAnswer": (_answer: string) => void
 
   // Player events
   "player:successReconnect": (_data: {
@@ -80,6 +81,9 @@ export interface ClientToServerEvents {
   "player:reconnect": (_message: { gameId: string }) => void
   "player:selectedAnswer": (
     _message: MessageWithoutStatus<{ answerKey: number }>
+  ) => void
+  "player:typedAnswer": (
+    _message: MessageWithoutStatus<{ answer: string }>
   ) => void
 
   // Common

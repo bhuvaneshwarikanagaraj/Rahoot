@@ -1,0 +1,56 @@
+[00:00:00.823] Server  LOG      ✓ Ready in 591ms
+[00:00:16.748] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:16.892] Browser WARN    Image with src "http://localhost:3002/_next/static/media/loader.c79cf8a7.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:00:16.893] Browser WARN    Image with src "/logo.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[00:00:25.135] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:03.321] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:03.321] Browser WARN    Image with src "http://localhost:3002/_next/static/media/loader.c79cf8a7.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:01:03.464] Browser WARN    Image with src "/logo.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[00:01:24.936] Browser ERROR   Connection error: timeout
+[00:01:47.916] Server  LOG      ✓ Compiled in 247ms
+[00:01:47.934] Browser ERROR   Connection error: timeout
+[00:01:48.231] Server  LOG      ✓ Compiled in 146ms
+[00:01:49.084] Server  LOG      ✓ Compiled in 62ms
+[00:01:49.481] Browser ERROR   uncaughtError: ReferenceError: logo is not defined
+[00:01:49.482] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:01:49.506] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:01:50.050] Server  LOG      ✓ Compiled in 70ms
+[00:01:50.299] Server  LOG      ✓ Compiled in 83ms
+[00:01:50.717] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:50.934] Browser WARN    Image with src "http://localhost:3002/_next/static/media/logo.58bb5ab4.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:01:50.935] Browser WARN    Image with src "http://localhost:3002/_next/static/media/loader.c79cf8a7.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:01:51.067] Server  LOG      ✓ Compiled in 45ms
+[00:01:51.143] Server  LOG      ✓ Compiled in 70ms
+[00:01:51.250] Server  LOG      ✓ Compiled in 62ms
+[00:01:56.565] Browser WARN    Image with src "/_next/static/media/logo.58bb5ab4.svg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[00:01:59.476] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:59.476] Browser WARN    Image with src "http://localhost:3002/_next/static/media/logo.58bb5ab4.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:01:59.476] Browser WARN    Image with src "http://localhost:3002/_next/static/media/loader.c79cf8a7.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:01:59.509] Browser WARN    Image with src "/_next/static/media/logo.58bb5ab4.svg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[00:01:59.600] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:59.682] Browser WARN    Image with src "http://localhost:3002/_next/static/media/logo.58bb5ab4.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:01:59.682] Browser WARN    Image with src "http://localhost:3002/_next/static/media/loader.c79cf8a7.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:01:59.682] Browser WARN    Image with src "/_next/static/media/logo.58bb5ab4.svg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[00:01:59.776] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:59.776] Browser WARN    Image with src "http://localhost:3002/_next/static/media/logo.58bb5ab4.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:01:59.776] Browser WARN    Image with src "http://localhost:3002/_next/static/media/loader.c79cf8a7.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:01:59.904] Browser WARN    Image with src "/_next/static/media/logo.58bb5ab4.svg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[00:02:09.091] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:09.212] Browser WARN    Image with src "http://localhost:3002/_next/static/media/logo.58bb5ab4.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:02:09.212] Browser WARN    Image with src "http://localhost:3002/_next/static/media/loader.c79cf8a7.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:02:09.212] Browser WARN    Image with src "/_next/static/media/logo.58bb5ab4.svg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[00:02:20.109] Browser ERROR   Connection error: timeout
+[00:02:30.934] Browser ERROR   Connection error: timeout
+[00:02:41.936] Browser ERROR   Connection error: timeout
+[00:02:52.935] Browser ERROR   Connection error: timeout
+[00:03:05.936] Browser ERROR   Connection error: timeout
+[00:03:15.937] Browser ERROR   Connection error: timeout
+[00:03:27.966] Browser ERROR   Connection error: websocket error
+[00:03:27.970] Browser ERROR   Connection error: websocket error

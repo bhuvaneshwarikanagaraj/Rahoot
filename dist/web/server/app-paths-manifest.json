@@ -1,0 +1,9 @@
+{
+  "/(auth)/manager/page": "app/(auth)/manager/page.js",
+  "/(auth)/page": "app/(auth)/page.js",
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/game/[gameId]/page": "app/game/[gameId]/page.js",
+  "/game/manager/[gameId]/page": "app/game/manager/[gameId]/page.js",
+  "/socket/route": "app/socket/route.js"
+}

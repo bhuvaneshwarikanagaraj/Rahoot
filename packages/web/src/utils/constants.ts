@@ -7,6 +7,7 @@ import Responses from "@rahoot/web/components/game/states/Responses"
 import Result from "@rahoot/web/components/game/states/Result"
 import Room from "@rahoot/web/components/game/states/Room"
 import Start from "@rahoot/web/components/game/states/Start"
+import TypeAnswer from "@rahoot/web/components/game/states/TypeAnswer"
 import Wait from "@rahoot/web/components/game/states/Wait"
 
 import { STATUS } from "@rahoot/common/types/game/status"
@@ -37,6 +38,7 @@ export const GAME_STATES = {
 
 export const GAME_STATE_COMPONENTS = {
   [STATUS.SELECT_ANSWER]: Answers,
+  [STATUS.TYPE_ANSWER]: TypeAnswer,
   [STATUS.SHOW_QUESTION]: Question,
   [STATUS.WAIT]: Wait,
   [STATUS.SHOW_START]: Start,
@@ -68,6 +70,7 @@ export const MANAGER_SKIP_BTN = {
   [STATUS.SHOW_PREPARED]: null,
   [STATUS.SHOW_QUESTION]: null,
   [STATUS.SELECT_ANSWER]: "Skip",
+  [STATUS.TYPE_ANSWER]: "Skip",
   [STATUS.SHOW_RESULT]: null,
   [STATUS.SHOW_RESPONSES]: "Next",
   [STATUS.SHOW_LEADERBOARD]: "Next",
