@@ -118,6 +118,12 @@ io.on("connection", (socket) => {
     )
   )
 
+  socket.on("player:typedAnswer", ({ gameId, data }) =>
+    withGame(gameId, socket, (game) =>
+      game.typeAnswer(socket, data.answer)
+    )
+  )
+
   socket.on("manager:abortQuiz", ({ gameId }) =>
     withGame(gameId, socket, (game) => game.abortRound(socket))
   )

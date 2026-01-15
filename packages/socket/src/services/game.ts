@@ -35,6 +35,7 @@ class Game {
   round: {
     currentQuestion: number
     playersAnswers: Answer[]
+    playersTextAnswers: TextAnswer[]
     startTime: number
   }
 
@@ -69,6 +70,7 @@ class Game {
 
     this.round = {
       playersAnswers: [],
+      playersTextAnswers: [],
       currentQuestion: 0,
       startTime: 0,
     }
@@ -319,6 +321,7 @@ class Game {
 
   async newRound() {
     const question = this.quizz.questions[this.round.currentQuestion]
+    const isSpellingQuiz = this.quizz.type === "spelling"
 
     if (!this.started) {
       return
@@ -333,7 +336,7 @@ class Game {
 
     this.managerStatus = null
     this.broadcastStatus(STATUS.SHOW_PREPARED, {
-      totalAnswers: question.answers.length,
+      totalAnswers: isSpellingQuiz ? 1 : question.answers?.length || 0,
       questionNumber: this.round.currentQuestion + 1,
     })
 
@@ -357,13 +360,23 @@ class Game {
 
     this.round.startTime = Date.now()
 
-    this.broadcastStatus(STATUS.SELECT_ANSWER, {
-      question: question.question,
-      answers: question.answers,
-      image: question.image,
-      time: question.time,
-      totalPlayer: this.players.length,
-    })
+    if (isSpellingQuiz) {
+      this.broadcastStatus(STATUS.TYPE_ANSWER, {
+        question: question.question,
+        audio: question.audio,
+        time: question.time,
+        totalPlayer: this.players.length,
+        wordLength: (question.solution as string).length,
+      })
+    } else {
+      this.broadcastStatus(STATUS.SELECT_ANSWER, {
+        question: question.question,
+        answers: question.answers || [],
+        image: question.image,
+        time: question.time,
+        totalPlayer: this.players.length,
+      })
+    }
 
     await this.startCooldown(question.time)
 
@@ -375,32 +388,58 @@ class Game {
   }
 
   showResults(question: any) {
+    const isSpellingQuiz = this.quizz.type === "spelling"
     const oldLeaderboard =
       this.leaderboard.length === 0
         ? this.players.map((p) => ({ ...p }))
         : this.leaderboard.map((p) => ({ ...p }))
 
-    const totalType = this.round.playersAnswers.reduce(
-      (acc: Record<number, number>, { answerId }) => {
-        acc[answerId] = (acc[answerId] || 0) + 1
+    let totalType: Record<number, number> = {}
 
-        return acc
-      },
-      {}
-    )
+    if (isSpellingQuiz) {
+      // For spelling quiz, count correct vs incorrect answers
+      totalType = this.round.playersTextAnswers.reduce(
+        (acc: Record<number, number>, { answer }) => {
+          const isCorrect = answer.toLowerCase() === (question.solution as string).toLowerCase()
+          const key = isCorrect ? 1 : 0 // 1 for correct, 0 for incorrect
+          acc[key] = (acc[key] || 0) + 1
+          return acc
+        },
+        {}
+      )
+    } else {
+      // For multiple choice, count answers by option
+      totalType = this.round.playersAnswers.reduce(
+        (acc: Record<number, number>, { answerId }) => {
+          acc[answerId] = (acc[answerId] || 0) + 1
+          return acc
+        },
+        {}
+      )
+    }
 
     const sortedPlayers = this.players
       .map((player) => {
-        const playerAnswer = this.round.playersAnswers.find(
-          (a) => a.playerId === player.id
-        )
+        let isCorrect = false
+        let points = 0
 
-        const isCorrect = playerAnswer
-          ? playerAnswer.answerId === question.solution
-          : false
-
-        const points =
-          playerAnswer && isCorrect ? Math.round(playerAnswer.points) : 0
+        if (isSpellingQuiz) {
+          const playerAnswer = this.round.playersTextAnswers.find(
+            (a) => a.playerId === player.id
+          )
+          isCorrect = playerAnswer
+            ? playerAnswer.answer.toLowerCase() === (question.solution as string).toLowerCase()
+            : false
+          points = playerAnswer && isCorrect ? Math.round(playerAnswer.points) : 0
+        } else {
+          const playerAnswer = this.round.playersAnswers.find(
+            (a) => a.playerId === player.id
+          )
+          isCorrect = playerAnswer
+            ? playerAnswer.answerId === (question.solution as number)
+            : false
+          points = playerAnswer && isCorrect ? Math.round(playerAnswer.points) : 0
+        }
 
         player.points += points
 
@@ -422,20 +461,36 @@ class Game {
         rank,
         aheadOfMe: aheadPlayer ? aheadPlayer.username : null,
       })
+
+      // For spelling quiz, send correct answer to players who got it wrong
+      if (isSpellingQuiz && !player.lastCorrect) {
+        this.io.to(player.id).emit("game:showCorrectAnswer", question.solution as string)
+      }
     })
 
-    this.sendStatus(this.manager.id, STATUS.SHOW_RESPONSES, {
-      question: question.question,
-      responses: totalType,
-      correct: question.solution,
-      answers: question.answers,
-      image: question.image,
-    })
+    if (isSpellingQuiz) {
+      this.sendStatus(this.manager.id, STATUS.SHOW_RESPONSES, {
+        question: question.question,
+        responses: totalType,
+        correct: 1, // For spelling, 1 represents correct answers
+        answers: ["Incorrect", "Correct"], // Labels for the response chart
+        image: question.image,
+      })
+    } else {
+      this.sendStatus(this.manager.id, STATUS.SHOW_RESPONSES, {
+        question: question.question,
+        responses: totalType,
+        correct: question.solution as number,
+        answers: question.answers || [],
+        image: question.image,
+      })
+    }
 
     this.leaderboard = sortedPlayers
     this.tempOldLeaderboard = oldLeaderboard
 
     this.round.playersAnswers = []
+    this.round.playersTextAnswers = []
   }
   selectAnswer(socket: Socket, answerId: number) {
     const player = this.players.find((player) => player.id === socket.id)
@@ -466,6 +521,39 @@ class Game {
     this.io.to(this.gameId).emit("game:totalPlayers", this.players.length)
 
     if (this.round.playersAnswers.length === this.players.length) {
+      this.abortCooldown()
+    }
+  }
+
+  typeAnswer(socket: Socket, answer: string) {
+    const player = this.players.find((player) => player.id === socket.id)
+    const question = this.quizz.questions[this.round.currentQuestion]
+
+    if (!player) {
+      return
+    }
+
+    if (this.round.playersTextAnswers.find((p) => p.playerId === socket.id)) {
+      return
+    }
+
+    this.round.playersTextAnswers.push({
+      playerId: player.id,
+      answer: answer.toLowerCase().trim(),
+      points: timeToPoint(this.round.startTime, question.time),
+    })
+
+    this.sendStatus(socket.id, STATUS.WAIT, {
+      text: "Waiting for the players to answer",
+    })
+
+    socket
+      .to(this.gameId)
+      .emit("game:playerAnswer", this.round.playersTextAnswers.length)
+
+    this.io.to(this.gameId).emit("game:totalPlayers", this.players.length)
+
+    if (this.round.playersTextAnswers.length === this.players.length) {
       this.abortCooldown()
     }
   }
